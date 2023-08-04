@@ -13,34 +13,35 @@ import { Personal } from "./pages/personal.jsx";
 import { Lost } from "./pages/lost.jsx";
 import { PetLost } from "./pages/petlost.jsx";
 import { Refuge } from "./pages/refuge.jsx";
-
+import { Profile } from "./pages/profile.jsx";
 
 //create your first component
 const Layout = () => {
-    //the basename is used when your project is published in a subdirectory and not in the root of the domain
-    // you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
-    const basename = process.env.BASENAME || "";
+  //the basename is used when your project is published in a subdirectory and not in the root of the domain
+  // you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
+  const basename = process.env.BASENAME || "";
 
-    return (
-        <div>
-            <BrowserRouter basename={basename}>
-                <ScrollToTop>
-                    <Navbar />
-                    <Routes>
-                        <Route element={<Home />} path="/" />
-                        <Route element={<Login />} path="/login" />
-                        <Route element={<Register />} path="/register" />
-                        <Route element={<Personal />} path="/register/personal" />
-                        <Route element={<Refuge />} path="/register/refuge" />
-                        <Route element={<Lost />} path="/lost" />
-                        <Route element={<PetLost />} path="/petlost/:id" />
-                        <Route element={<h1>Not found!</h1>} />
-                    </Routes>
-                    <Footer />
-                </ScrollToTop>
-            </BrowserRouter>
-        </div>
-    );
+  return (
+    <div>
+      <BrowserRouter basename={basename}>
+        <ScrollToTop>
+          <Navbar />
+          <Routes>
+            <Route element={<Home />} path="/" />
+            <Route element={<Login />} path="/login" />
+            <Route element={<Register />} path="/register" />
+            <Route element={<Personal />} path="/register/personal" />
+            <Route element={<Refuge />} path="/register/refuge" />
+            <Route element={<Lost />} path="/lost" />
+            <Route element={<PetLost />} path="/petlost/:id" />
+            <Route element={<Profile />} path="/profile" />
+            <Route element={<h1>Not found!</h1>} />
+          </Routes>
+          <Footer />
+        </ScrollToTop>
+      </BrowserRouter>
+    </div>
+  );
 };
 
 export default injectContext(Layout);

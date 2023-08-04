@@ -111,6 +111,31 @@ def valid_token():
     # If user is correct then it shows the user's info
     return jsonify({"status": True,"user": user.serialize()  }), 200
 
+# ----------------------- Usuarios ----------------------
+# Get - All Users
+@api.route('/users', methods=['GET'])
+def getUsers():
+
+    users = User.query.all() 
+    all_users = list(map(lambda item: item.serialize(), users))
+
+    return jsonify(all_users), 200
+
+# Get - One User for ID
+@api.route('/users/<int:id>', methods=['GET'])
+def getUser(id):
+
+    user = User.query.filter_by(id=id).first()
+
+    if user is not None:
+        return jsonify(user.serialize()), 200
+    
+    # Afuera del if
+    response_body = {
+            "msg": "Usuario no existe"
+        }
+    return jsonify(response_body), 400
+
 # ----------------------- Mascotas ----------------------
 
 # Get - All Mascotas
